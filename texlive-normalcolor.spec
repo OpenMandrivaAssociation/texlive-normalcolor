@@ -3,7 +3,7 @@ Version:	40125
 Release:	2
 Summary:	Changing \normalcolor
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/normalcolor
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/normalcolor
 License:	lppl1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.doc.r%{version}.tar.xz
