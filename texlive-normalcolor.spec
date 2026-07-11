@@ -1,41 +1,24 @@
-Name:		texlive-normalcolor
-Version:	40125
-Release:	2
+%global tl_name normalcolor
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	r11
+Release:	%{tl_revision}.1
 Summary:	Changing \normalcolor
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/normalcolor
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/normalcolor.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides a command \setnormalcolor with the same
-syntax as the command \color either of package color or of
-package xcolor. However, \setnormalcolor will not change the
-current colour but the normal / default color.
+This package provides a command \setnormalcolor with the same syntax as
+the command \color either of package color or of package xcolor.
+However, \setnormalcolor will not change the current colour but the
+normal / default color.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/normalcolor
-%{_texmfdistdir}/tex/latex/normalcolor
-%doc %{_texmfdistdir}/doc/latex/normalcolor
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
